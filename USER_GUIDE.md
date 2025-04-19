@@ -71,7 +71,7 @@ The extension provides two configuration options:
 
 Flat Mode determines how your downloaded artifacts are organized:
 
-- **Disabled (default)**: 
+- **Disabled (default)**:
   - Artifacts are organized into directories by type (code, markdown, html, etc.)
   - Code artifacts are further organized by language (python, javascript, etc.)
   - A detailed README.md is generated with comprehensive artifact information
@@ -81,6 +81,7 @@ Flat Mode determines how your downloaded artifacts are organized:
   - A simpler README.md is generated with basic information
 
 To toggle Flat Mode:
+
 - Click the switch next to "Flat Mode" in the extension popup
 - Your preference will be saved for future downloads
 
@@ -92,6 +93,7 @@ The extension interface can be switched between light and dark themes:
 - **Dark Mode**: Dark background with light text
 
 To toggle Dark Mode:
+
 - Click the switch next to "Dark Mode" in the extension popup
 - Your preference will be saved for future use
 
@@ -101,7 +103,7 @@ To toggle Dark Mode:
 
 When Flat Mode is disabled (the default), the downloaded zip file will have the following organized structure:
 
-```
+```tree
 claude-artifacts-[timestamp]/
 ├── README.md
 ├── code/
@@ -127,7 +129,7 @@ claude-artifacts-[timestamp]/
 
 When Flat Mode is enabled, the downloaded zip file will have a simpler, flat structure:
 
-```
+```tree
 claude-artifacts-[timestamp]/
 ├── README.md
 ├── example_script.py
@@ -167,7 +169,7 @@ The extension handles different artifact types as follows:
 
 - **Code**: Saved with appropriate language-specific extensions (.py, .js, etc.)
 - **Markdown**: Saved with .md extension
-- **Mermaid Diagrams**: Saved with .mmd extension 
+- **Mermaid Diagrams**: Saved with .mmd extension
 - **HTML**: Saved with .html extension
 - **SVG**: Saved with .svg extension
 - **React Components**: Saved with .jsx extension
@@ -190,11 +192,13 @@ After downloading and extracting artifacts:
 #### "No artifacts found" message
 
 **Possible causes:**
+
 - The current conversation doesn't contain any artifacts
 - You're not on a Claude conversation page
 - API connection issue
 
 **Solutions:**
+
 - Verify you're on a Claude conversation page containing artifacts
 - Refresh the page and try scanning again
 - Check if you're logged into Claude
@@ -202,11 +206,13 @@ After downloading and extracting artifacts:
 #### Cannot download artifacts
 
 **Possible causes:**
+
 - Download permission not granted
 - Network issue
 - Browser download settings
 
 **Solutions:**
+
 - Check browser permissions for the extension
 - Verify your internet connection
 - Check browser download settings
@@ -214,6 +220,7 @@ After downloading and extracting artifacts:
 #### Error messages
 
 The extension will display specific error messages to help diagnose issues:
+
 - API connection errors
 - Authentication issues
 - Parsing problems

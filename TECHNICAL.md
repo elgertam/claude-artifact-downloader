@@ -23,6 +23,7 @@ The extension uses the following Claude API endpoints:
 ### Authentication
 
 The extension relies on the user's existing authentication with Claude. API requests include:
+
 - `credentials: 'include'` to send cookies with requests
 - Content-Type headers set to `application/json`
 
@@ -118,6 +119,7 @@ The extension follows a modular architecture with clear separation of concerns:
 ### manifest.json
 
 This is the configuration file for the Chrome extension, defining:
+
 - Permissions required
 - Extension metadata
 - Script execution contexts
@@ -126,6 +128,7 @@ This is the configuration file for the Chrome extension, defining:
 ### popup/
 
 Contains the user interface components:
+
 - **popup.html**: The main extension popup structure
 - **popup.css**: Styling for the popup, including dark/light mode
 - **popup.js**: User interaction handling and messaging to content script
@@ -133,6 +136,7 @@ Contains the user interface components:
 ### content.js
 
 Core functionality implementation:
+
 - API communication
 - Conversation parsing
 - Artifact extraction
@@ -141,6 +145,7 @@ Core functionality implementation:
 ### background.js
 
 Provides extension lifecycle management:
+
 - Initialization on installation
 - Default preference setting
 - Event handling for tab updates
@@ -151,6 +156,7 @@ Provides extension lifecycle management:
 ### In-Memory Processing
 
 The extension processes artifacts entirely in memory:
+
 1. Artifacts are extracted from the API response
 2. JSZip creates the zip file in memory
 3. The zip is converted to a blob and downloaded
@@ -160,6 +166,7 @@ This approach avoids storing sensitive data on disk and provides better performa
 ### Self-Contained Design
 
 The extension runs entirely within the browser and requires:
+
 - No external servers
 - No permanent storage beyond user preferences
 - No cross-origin requests except to Claude's own API
@@ -218,6 +225,7 @@ The extension implements error handling at multiple levels:
 ## Browser Compatibility
 
 The extension is compatible with:
+
 - Chrome (version 88+)
 - Edge (version 88+)
 - Other Chromium-based browsers that support Manifest V3
@@ -319,10 +327,12 @@ The extension was tested across various scenarios:
 
 - URL: `https://claude.ai/api/organizations`
 - Method: GET
-- Headers: 
-  ```
+- Headers:
+
+  ```mime
   Content-Type: application/json
   ```
+
 - Authentication: Uses existing Claude session cookies
 - Response Format: JSON array of organization objects
 
@@ -333,9 +343,11 @@ The extension was tested across various scenarios:
 - Parameters:
   - `orgId`: Organization UUID from the organizations endpoint
   - `conversationId`: UUID from the current URL
-- Headers: 
-  ```
+- Headers:
+
+  ```mime
   Content-Type: application/json
   ```
+
 - Authentication: Uses existing Claude session cookies
 - Response Format: JSON conversation object with nested messages and artifacts

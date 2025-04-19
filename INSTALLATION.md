@@ -17,11 +17,13 @@ This guide will walk you through installing the Claude Artifact Downloader exten
    - Download `setup.sh` from this repository
 
 2. **Make the script executable**
+
    ```bash
    chmod +x setup.sh
    ```
 
 3. **Run the script**
+
    ```bash
    ./setup.sh
    ```
@@ -44,10 +46,11 @@ This guide will walk you through installing the Claude Artifact Downloader exten
 ### Method 2: Manual Installation
 
 1. **Clone or download this repository**
+
    ```bash
    git clone https://github.com/yourusername/claude-artifact-downloader.git
    ```
-   
+
    Alternatively, download the ZIP file and extract it
 
 2. **Open Chrome's extension management page**
@@ -70,22 +73,27 @@ This guide will walk you through installing the Claude Artifact Downloader exten
 ### Common Issues
 
 #### "Load unpacked" button not visible
+
 - Make sure Developer mode is enabled (toggle in top-right corner)
 
 #### "Manifest file missing or unreadable"
+
 - Ensure all files are properly extracted and the directory structure is maintained
 - Check that manifest.json exists in the root of the extension directory
 
 #### Extension not appearing in toolbar
+
 - Click the puzzle piece icon in your browser toolbar
 - Find "Claude Artifact Downloader" in the list and pin it
 
 #### Security warnings
+
 - Chrome will warn that you're using an extension in developer mode
 - This is normal for unpacked extensions
 - Click "Keep" or "Continue" to proceed
 
 #### Permission warnings
+
 - The extension requires certain permissions to function
 - Review the permissions and accept them if you're comfortable
 

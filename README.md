@@ -15,22 +15,6 @@ A Chrome browser extension for downloading artifacts from Claude AI conversation
 
 ### From Source
 
-#### Option 1: Using Setup Scripts
-
-**For Linux/macOS Users:**
-1. Download `setup.sh`
-2. Open Terminal and navigate to the download location
-3. Make the script executable: `chmod +x setup.sh`
-4. Run the script: `./setup.sh`
-5. Follow the on-screen instructions to install the extension
-
-**For Windows Users:**
-1. Download `setup.bat`
-2. Double-click the file to run it
-3. Follow the on-screen instructions to install the extension
-
-#### Option 2: Manual Installation
-
 1. Clone this repository or download it as a ZIP file
 2. Extract the contents to a folder
 3. Open Chrome and navigate to `chrome://extensions/`
@@ -49,6 +33,7 @@ A Chrome browser extension for downloading artifacts from Claude AI conversation
 ### Flat Mode
 
 Toggle "Flat Mode" in the extension popup to:
+
 - When disabled (default): Organize artifacts into directories by type (code, markdown, html, etc.)
 - When enabled: Place all artifacts in the root directory without categorization
 - The organization preference affects both file structure and README detail level
@@ -123,11 +108,13 @@ This extension requires the following permissions:
 ### Common Issues
 
 **Extension not detecting artifacts:**
+
 - Make sure you're on a Claude conversation page
 - Try refreshing the page and scanning again
 - Check if you're logged into Claude
 
 **Download fails:**
+
 - Check your Chrome download settings
 - Make sure you have sufficient disk space
 - Try disabling other extensions that might interfere with downloads
@@ -135,6 +122,7 @@ This extension requires the following permissions:
 ## Privacy
 
 This extension:
+
 - Only accesses data from Claude conversations
 - Does not send your data to any external servers
 - All processing happens locally in your browser
