@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Artifact Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Claude Artifact Downloader</h1>
+    
+    <div class="controls">
+      <button id="scanButton" class="primary-btn">Scan for Artifacts</button>
+      <button id="downloadButton" class="primary-btn" disabled>Download All</button>
+      <div class="toggle-container">
+        <label class="toggle-label" for="flatMode">Flat Mode</label>
+        <label class="switch">
+          <input type="checkbox" id="flatMode">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="toggle-container">
+        <label class="toggle-label" for="darkMode">Dark Mode</label>
+        <label class="switch">
+          <input type="checkbox" id="darkMode">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+    
+    <div id="statusArea" class="status">
+      <div class="spinner hidden" id="spinner"></div>
+      <p id="statusMessage">Click "Scan for Artifacts" to begin</p>
+    </div>
+    
+    <div id="artifactsList" class="artifacts-list">
+      <!-- Artifacts will be listed here -->
+    </div>
+    
+    <div id="errorArea" class="error hidden">
+      <p id="errorMessage"></p>
+    </div>
+    
+    <div class="footer">
+      <small>v1.0.0 | <a href="https://github.com/yourusername/claude-artifact-downloader" target="_blank">GitHub</a></small>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
