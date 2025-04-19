@@ -1,5 +1,9 @@
 # Claude Artifact Downloader
 
+<!-- insert logo -->
+<!-- <img src="https://raw.githubusercontent.com/elgertam/claude-artifact-downloader/master/icons/icon512.png" alt="Claude Artifact Downloader Logo" width="200" height="200" style="float: left; margin-right: 20px;"> -->
+![image](icons/icon128.png "Claude Artifact Downloader Logo")
+
 A Chrome browser extension for downloading artifacts from Claude AI conversations. This extension uses the Claude API to reliably extract artifacts rather than scraping the DOM.
 
 ## Features
@@ -17,7 +21,7 @@ A Chrome browser extension for downloading artifacts from Claude AI conversation
 
 1. Clone this repository or download it as a ZIP file
 2. Extract the contents to a folder
-3. Open Chrome and navigate to `chrome://extensions/`
+3. Open Chrome/Brave/Edge/Chromium and navigate to `chrome://extensions/` (or your browser's extensions page)
 4. Enable "Developer mode" (toggle in the top-right corner)
 5. Click "Load unpacked" and select the extension folder
 6. The extension should now be installed and ready to use

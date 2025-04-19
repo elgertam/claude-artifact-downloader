@@ -74,30 +74,101 @@ async function scanArtifacts() {
  */
 async function getOrganizationId() {
   try {
+    // First try to use the organizations API endpoint
     const response = await fetch('https://claude.ai/api/organizations', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      credentials: 'include'
+      credentials: 'include', // Include cookies in the request
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch organizations: ${response.status}`);
+      console.warn(`Organizations API request failed with status: ${response.status}`);
+      return await getFallbackOrganizationId();
     }
 
-    const data = await response.json();
+    const organizations = await response.json();
 
-    if (!data || !data.length) {
-      throw new Error('No organizations found');
+    // Find the first organization with "chat" capability
+    const chatOrg = organizations.find(org =>
+      org.capabilities && org.capabilities.includes('chat')
+    );
+
+    if (chatOrg && chatOrg.uuid) {
+      console.log(`Found organization ID: ${chatOrg.uuid}`);
+      return chatOrg.uuid;
     }
 
-    // Return the first organization's ID
-    return data[0].uuid;
+    // If no organization with chat capability is found, use the first one
+    if (organizations.length > 0 && organizations[0].uuid) {
+      console.log(`Using first available organization ID: ${organizations[0].uuid}`);
+      return organizations[0].uuid;
+    }
+
+    // If we still don't have an organization ID, try fallback methods
+    return await getFallbackOrganizationId();
   } catch (error) {
-    console.error('Error getting organization ID:', error);
-    throw error;
+    console.warn('Error fetching organizations:', error);
+    return await getFallbackOrganizationId();
   }
+}
+
+/**
+ * Fallback methods to get organization ID if the API endpoint fails
+ */
+async function getFallbackOrganizationId() {
+  // Try to get from localStorage first
+  const localStorageData = localStorage.getItem('claude-settings');
+  if (localStorageData) {
+    try {
+      const settings = JSON.parse(localStorageData);
+      if (settings.organizationId) {
+        console.log(`Found organization ID in localStorage: ${settings.organizationId}`);
+        return settings.organizationId;
+      }
+    } catch (e) {
+      console.warn('Could not parse settings from localStorage:', e);
+    }
+  }
+
+  // Try to get from the page
+  const script = document.querySelector('script#__NEXT_DATA__');
+  if (script && script.textContent) {
+    try {
+      const data = JSON.parse(script.textContent);
+      if (data.props?.pageProps?.organizationId) {
+        console.log(`Found organization ID in page data: ${data.props.pageProps.organizationId}`);
+        return data.props.pageProps.organizationId;
+      }
+    } catch (e) {
+      console.warn('Could not parse organization ID from page data:', e);
+    }
+  }
+
+  // As a last resort, try to extract from the URL or DOM
+  try {
+    // Look for organization selector in the DOM
+    const orgSelector = document.querySelector('[data-testid="org-selector"]');
+    if (orgSelector) {
+      const orgId = orgSelector.getAttribute('data-org-id');
+      if (orgId) {
+        console.log(`Found organization ID in DOM: ${orgId}`);
+        return orgId;
+      }
+    }
+
+    // Check if it's in the URL
+    const urlMatch = window.location.href.match(/\/organizations\/([0-9a-f-]+)/);
+    if (urlMatch) {
+      console.log(`Found organization ID in URL: ${urlMatch[1]}`);
+      return urlMatch[1];
+    }
+  } catch (e) {
+    console.warn('Could not extract organization ID from DOM or URL:', e);
+  }
+
+  return null;
 }
 
 /**
